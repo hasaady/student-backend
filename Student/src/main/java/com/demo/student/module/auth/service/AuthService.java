@@ -15,22 +15,22 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
 
-    public String authenticateUser(String email, String password) {
-        Optional<User> userOpt = userRepository.findByEmail(email);
+    public String authenticateUser(String username, String password) {
+        Optional<User> userOpt = userRepository.findByUsername(username);
 
         if (userOpt.isPresent() && passwordEncoder.matches(password, userOpt.get().getPassword())) {
-            return jwtUtil.generateToken(email);
+            return jwtUtil.generateToken(username);
         } else {
             throw new RuntimeException("Invalid Credentials");
         }
     }
 
-    public String generateRefreshToken(String email) {
-        return jwtUtil.generateToken(email);
+    public String generateRefreshToken(String username) {
+        return jwtUtil.generateToken(username);
     }
 
     public String refreshAccessToken(String refreshToken) {
-        String email = jwtUtil.extractEmail(refreshToken);
-        return jwtUtil.generateToken(email);
+        String username = jwtUtil.extractUsername(refreshToken);
+        return jwtUtil.generateToken(username);
     }
 }

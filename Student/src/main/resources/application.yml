@@ -22,5 +22,8 @@ spring:
     change-log: classpath:db/changelog/db.changelog-master.xml
 
 jwt:
-  secret: your-very-secure-secret-key
-  expiration: 300000 # 5 minutes in milliseconds
+  secret: vNaxPh8J0ZOTnG9N2+QFZffQ0N7sz8A5VvsJp3dRnK0=
+  expiration: 300000
+
+session:
+  expiration: 600000

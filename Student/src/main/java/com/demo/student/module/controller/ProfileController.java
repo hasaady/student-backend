@@ -17,16 +17,16 @@ public class ProfileController {
 
     @GetMapping
     public ProfileResponse getUserProfile(Authentication authentication) {
-        String email = authentication.name();
-        return userService.getUserProfile(email);
+        String username = authentication.name();
+        return userService.getUserProfile(username);
     }
 
     @PutMapping
     public ProfileResponse updateUserProfile(
             Authentication authentication,
             @RequestBody ProfileUpdateRequest request) {
-        String email = authentication.name();
+        String username = authentication.name();
 
-        return userService.updateUserProfile(email, request);
+        return userService.updateUserProfile(username, request);
     }
 }

@@ -42,8 +42,8 @@ public class UserService {
         return user;
     }
 
-    public ProfileResponse getUserProfile(String email) {
-        Optional<User> userOpt = userRepository.findByEmail(email);
+    public ProfileResponse getUserProfile(String username) {
+        Optional<User> userOpt = userRepository.findByEmail(username);
 
         if (userOpt.isEmpty()) {
             throw new RuntimeException("User not found");
