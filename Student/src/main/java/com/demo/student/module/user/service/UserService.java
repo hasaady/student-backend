@@ -43,7 +43,7 @@ public class UserService {
     }
 
     public ProfileResponse getUserProfile(String username) {
-        Optional<User> userOpt = userRepository.findByEmail(username);
+        Optional<User> userOpt = userRepository.findByUsername(username);
 
         if (userOpt.isEmpty()) {
             throw new RuntimeException("User not found");
@@ -61,7 +61,7 @@ public class UserService {
     }
 
     public ProfileResponse updateUserProfile(String email, ProfileUpdateRequest request) {
-        Optional<User> userOpt = userRepository.findByEmail(email);
+        Optional<User> userOpt = userRepository.findByUsername(email);
 
         if (userOpt.isEmpty()) {
             throw new RuntimeException("User not found");
