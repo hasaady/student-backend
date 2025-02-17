@@ -10,11 +10,11 @@ public class RefreshTokenService {
     private final JwtUtil jwtUtil;
 
     public String generateAccessToken(String email) {
-        return jwtUtil.generateToken(email, 5 * 60 * 1000);
+        return jwtUtil.generateToken(email);
     }
 
     public String generateRefreshToken(String email) {
-        return jwtUtil.generateToken(email, 10 * 60 * 1000);
+        return jwtUtil.generateToken(email);
     }
 
 }

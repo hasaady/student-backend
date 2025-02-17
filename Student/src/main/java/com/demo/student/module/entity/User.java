@@ -1,4 +1,4 @@
-package com.demo.student.module.user.entity;
+package com.demo.student.module.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,12 +9,11 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Entity
-@Table(name = "users")
-@Getter
-@Setter
+@Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Table(name = "users")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,23 +37,21 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String countryCode;
 
+    private String countryName;
+
+    private String capital;
+
+    private String region;
+
     @Builder.Default
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Builder.Default
-    @Column(nullable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return email;
-    }
+    public Collection<? extends GrantedAuthority> getAuthorities() { return null; }
 
     @Override
     public boolean isAccountNonExpired() {

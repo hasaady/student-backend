@@ -18,6 +18,9 @@
             <column name="duration" type="INT">
                 <constraints nullable="false"/>
             </column>
+            <column name="schedule_time" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
             <column name="instructor" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>

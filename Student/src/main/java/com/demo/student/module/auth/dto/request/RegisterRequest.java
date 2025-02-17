@@ -1,16 +1,30 @@
 package com.demo.student.module.auth.dto.request;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
+@Data
 public class RegisterRequest {
+
+    @NotBlank
     private String firstName;
+
+    @NotBlank
     private String lastName;
-    private String username;
-    private String password;
+
+    @NotBlank
     private String email;
+
+    @NotBlank
+    private String username;
+
+    @NotBlank
+    private String password;
+
+    @NotBlank
+    private String countryCode;
 }

@@ -1,18 +1,13 @@
 package com.demo.student.module.course.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
-@Table(name = "course_registrations")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Table(name = "course_registrations")
 public class CourseRegistration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,7 @@
 package com.demo.student.module.course.controller;
 
+import com.demo.student.aspect.SecureRole;
+import com.demo.student.module.course.entity.Course;
 import com.demo.student.module.course.service.CourseRegistrationService;
 import com.demo.student.module.course.dto.Request.CreateCourseRequest;
 import com.demo.student.module.course.dto.Response.CourseDetailsResponse;
@@ -8,7 +10,12 @@ import com.demo.student.module.course.dto.Response.CourseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
+import java.util.Optional;
+
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,6 +37,7 @@ public class CourseController {
         return ResponseEntity.ok(courseService.getCourseById(id));
     }
 
+    @SecureRole("admin")
     @PostMapping
     public ResponseEntity<CourseDetailsResponse> addCourse(@RequestBody CreateCourseRequest request) {
         return ResponseEntity.ok(courseService.addCourse(request));
@@ -49,6 +57,17 @@ public class CourseController {
     @GetMapping("/enrolled/{studentId}")
     public ResponseEntity<List<CourseResponse>> getEnrolledCourses(@PathVariable String studentId) {
         return ResponseEntity.ok(courseRegistrationService.getEnrolledCourses(studentId));
+    }
+
+    @GetMapping("/{id}/schedule/pdf")
+    public ResponseEntity<byte[]> getCourseSchedulePdf(@PathVariable int id) {
+
+        byte[] pdfContent = courseService.generateCourseSchedulePdf(id);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=course_" + id + "_schedule.pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(pdfContent);
     }
 }
 

@@ -1,7 +1,7 @@
-package com.demo.student.module.user.repository;
+package com.demo.student.module.repository;
 
-import com.demo.student.module.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.demo.student.module.entity.User;
 
 import java.util.Optional;
 

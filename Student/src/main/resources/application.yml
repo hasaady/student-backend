@@ -1,37 +1,26 @@
+
 spring:
   application:
     name: Student
-
   datasource:
     url: jdbc:postgresql://localhost:5432/student_management
     username: admin
     password: Strong(!)Password
     driver-class-name: org.postgresql.Driver
-
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
-  liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.xml
-
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    listener:
-      simple:
-        concurrency: 5
-        max-concurrency: 10
-        retry:
-          enabled: true
-
   cache:
     type: redis
   data:
     redis:
       host: localhost
       port: 6379
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+jwt:
+  secret: your-very-secure-secret-key
+  expiration: 300000 # 5 minutes in milliseconds

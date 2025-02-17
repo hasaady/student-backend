@@ -33,12 +33,14 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-security")
+
+    // BCrypt for Password Encoding
+    implementation("org.springframework.security:spring-security-crypto")
 
     // JWT dependencies
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
@@ -61,8 +63,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-amqp")
     implementation("com.fasterxml.jackson.core:jackson-databind")
 
-    // BCrypt for Password Encoding
-    implementation("org.springframework.security:spring-security-crypto")
+    // iText for PDF generation
+    implementation("com.itextpdf:itext7-core:7.1.15")
 
     // JUnit 5 & Mockito for Testing
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -71,6 +73,7 @@ dependencies {
     testImplementation("org.mockito:mockito-core")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.amqp:spring-rabbit-test")
+
 }
 
 tasks.withType<Test> {

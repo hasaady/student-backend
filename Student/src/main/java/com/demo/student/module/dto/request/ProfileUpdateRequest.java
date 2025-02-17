@@ -1,10 +1,8 @@
-package com.demo.student.module.user.dto.request;
+package com.demo.student.module.dto.request;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class ProfileUpdateRequest {
     private String firstName;
     private String lastName;

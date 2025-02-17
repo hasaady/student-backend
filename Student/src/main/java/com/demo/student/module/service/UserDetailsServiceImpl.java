@@ -1,6 +1,6 @@
-package com.demo.student.module.auth.service;
+package com.demo.student.module.service;
 
-import com.demo.student.module.user.repository.UserRepository;
+import com.demo.student.module.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

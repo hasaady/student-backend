@@ -1,12 +1,11 @@
 package com.demo.student.module.auth.dto.response;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 public class LoginResponse {
     private String token;
     private String refreshToken;

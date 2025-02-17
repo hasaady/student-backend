@@ -1,11 +1,9 @@
-package com.demo.student.module.user.dto.response;
+package com.demo.student.module.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class ProfileResponse {
     private String firstName;
