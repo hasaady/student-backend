@@ -1,4 +1,4 @@
-package com.demo.student.module.entity;
+package com.demo.student.module.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

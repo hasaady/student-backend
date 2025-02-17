@@ -1,13 +1,15 @@
-package com.demo.student.module.controller;
+package com.demo.student.module.user.controller;
 
-import com.demo.student.module.service.UserService;
-import com.demo.student.module.dto.request.ProfileUpdateRequest;
-import com.demo.student.module.dto.response.ProfileResponse;
+import com.demo.student.module.user.service.UserService;
+import com.demo.student.module.user.dto.request.ProfileUpdateRequest;
+import com.demo.student.module.user.dto.response.ProfileResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+@SecurityRequirement(name = "bearerAuth")
 @RestController
 @RequestMapping("/api/profile")
 @Tag(name = "User Management")

@@ -1,10 +1,10 @@
-package com.demo.student.module.service;
+package com.demo.student.module.user.service;
 
 import com.demo.student.module.auth.dto.request.RegisterRequest;
-import com.demo.student.module.entity.User;
-import com.demo.student.module.repository.UserRepository;
-import com.demo.student.module.dto.request.ProfileUpdateRequest;
-import com.demo.student.module.dto.response.ProfileResponse;
+import com.demo.student.module.user.entity.User;
+import com.demo.student.module.user.repository.UserRepository;
+import com.demo.student.module.user.dto.request.ProfileUpdateRequest;
+import com.demo.student.module.user.dto.response.ProfileResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

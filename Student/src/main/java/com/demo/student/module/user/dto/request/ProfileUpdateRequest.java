@@ -1,4 +1,4 @@
-package com.demo.student.module.dto.request;
+package com.demo.student.module.user.dto.request;
 
 import lombok.Data;
 

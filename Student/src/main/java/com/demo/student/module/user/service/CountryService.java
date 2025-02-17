@@ -1,6 +1,6 @@
-package com.demo.student.module.service;
+package com.demo.student.module.user.service;
 
-import com.demo.student.module.dto.response.CountryResponse;
+import com.demo.student.module.user.dto.response.CountryResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
