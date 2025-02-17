@@ -1,4 +1,20 @@
 services:
+  student-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: student-app
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/student_management
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8082:8080"
+
   postgres:
     image: postgres:latest
     container_name: student-database
@@ -36,3 +52,5 @@ services:
 volumes:
   postgres_data:
   student_cache:
+
+
