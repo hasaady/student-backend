@@ -29,4 +29,18 @@
             </column>
         </createTable>
     </changeSet>
+
+    <!-- Indexing for optimized queries -->
+    <changeSet id="002" author="developer">
+        <createIndex indexName="idx_courses_name" tableName="courses">
+            <column name="name"/>
+        </createIndex>
+        <createIndex indexName="idx_courses_instructor" tableName="courses">
+            <column name="instructor"/>
+        </createIndex>
+        <createIndex indexName="idx_courses_schedule_time" tableName="courses">
+            <column name="schedule_time"/>
+        </createIndex>
+    </changeSet>
+
 </databaseChangeLog>

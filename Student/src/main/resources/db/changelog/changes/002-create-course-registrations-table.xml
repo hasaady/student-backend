@@ -17,4 +17,28 @@
             </column>
         </createTable>
     </changeSet>
+
+    <!-- Adding Indexes for better query performance -->
+    <changeSet id="003" author="developer">
+        <createIndex indexName="idx_course_registrations_course_id" tableName="course_registrations">
+            <column name="course_id"/>
+        </createIndex>
+        <createIndex indexName="idx_course_registrations_student_id" tableName="course_registrations">
+            <column name="student_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Adding Foreign Key Constraints -->
+    <changeSet id="004" author="developer">
+        <addForeignKeyConstraint
+                baseTableName="course_registrations" baseColumnNames="course_id"
+                referencedTableName="courses" referencedColumnNames="id"
+                constraintName="fk_course_registrations_course"/>
+
+        <addForeignKeyConstraint
+                baseTableName="course_registrations" baseColumnNames="student_id"
+                referencedTableName="students" referencedColumnNames="id"
+                constraintName="fk_course_registrations_student"/>
+    </changeSet>
+
 </databaseChangeLog>

@@ -44,4 +44,21 @@
             </column>
         </createTable>
     </changeSet>
+
+    <!-- Adding Indexes for Optimized Queries -->
+    <changeSet id="002" author="developer">
+        <createIndex indexName="idx_users_username" tableName="users">
+            <column name="username"/>
+        </createIndex>
+        <createIndex indexName="idx_users_email" tableName="users">
+            <column name="email"/>
+        </createIndex>
+        <createIndex indexName="idx_users_country_code" tableName="users">
+            <column name="country_code"/>
+        </createIndex>
+        <createIndex indexName="idx_users_created_at" tableName="users">
+            <column name="created_at"/>
+        </createIndex>
+    </changeSet>
+
 </databaseChangeLog>
