@@ -3,7 +3,7 @@ spring:
   application:
     name: Student
   datasource:
-    url: jdbc:postgresql://postgres:5432/student_management
+    url: jdbc:postgresql://database:5432/student_management
     username: admin
     password: Strong(!)Password
     driver-class-name: org.postgresql.Driver
@@ -11,7 +11,7 @@ spring:
     type: redis
   data:
     redis:
-      host: redis
+      host: cache
       port: 6379
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
