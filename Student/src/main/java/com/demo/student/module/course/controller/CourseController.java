@@ -1,23 +1,21 @@
 package com.demo.student.module.course.controller;
 
 import com.demo.student.aspect.SecureRole;
-import com.demo.student.module.course.entity.Course;
 import com.demo.student.module.course.service.CourseRegistrationService;
 import com.demo.student.module.course.dto.Request.CreateCourseRequest;
 import com.demo.student.module.course.dto.Response.CourseDetailsResponse;
 import com.demo.student.module.course.service.CourseService;
 import com.demo.student.module.course.dto.Response.CourseResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
-import java.util.Optional;
-
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
 
+@SecurityRequirement(name = "bearerAuth")
 @RestController
 @RequestMapping("/api/courses")
 @Tag(name = "Course Management")

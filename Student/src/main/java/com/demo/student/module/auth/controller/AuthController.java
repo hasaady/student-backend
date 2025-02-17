@@ -5,7 +5,7 @@ import com.demo.student.module.auth.dto.response.RegisterResponse;
 import com.demo.student.module.auth.service.AuthService;
 import com.demo.student.module.auth.dto.request.LoginRequest;
 import com.demo.student.module.auth.dto.response.LoginResponse;
-import com.demo.student.module.service.UserService;
+import com.demo.student.module.user.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

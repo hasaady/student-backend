@@ -1,8 +1,8 @@
 package com.demo.student.module.auth.service;
 
 import com.demo.student.module.auth.util.jwt.JwtUtil;
-import com.demo.student.module.repository.UserRepository;
-import com.demo.student.module.entity.User;
+import com.demo.student.module.user.repository.UserRepository;
+import com.demo.student.module.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
