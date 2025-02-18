@@ -1,0 +1,102 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001
+      author: developer
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: country_code
+                  type: VARCHAR(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: country_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: capital
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: region
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 002
+      author: developer
+      changes:
+        - createIndex:
+            indexName: idxUsersUsername
+            tableName: users
+            columns:
+              - column:
+                  name: username
+        - createIndex:
+            indexName: idxUsersEmail
+            tableName: users
+            columns:
+              - column:
+                  name: email
+        - createIndex:
+            indexName: idxUsersCountryCode
+            tableName: users
+            columns:
+              - column:
+                  name: country_code
+        - createIndex:
+            indexName: idxUsersCreatedAt
+            tableName: users
+            columns:
+              - column:
+                  name: created_at

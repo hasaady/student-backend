@@ -35,30 +35,24 @@ public class CourseController {
         return ResponseEntity.ok(courseService.getCourseById(id));
     }
 
-    @SecureRole("admin")
-    @PostMapping
-    public ResponseEntity<CourseDetailsResponse> addCourse(@RequestBody CreateCourseRequest request) {
-        return ResponseEntity.ok(courseService.addCourse(request));
+    @PostMapping("/{courseId}/register/{userId}")
+    public ResponseEntity<?> registerForCourse(@PathVariable long courseId, @PathVariable long userId) {
+        return courseRegistrationService.registerUserForCourse(courseId, userId);
     }
 
-    @PostMapping("/{courseId}/register/{studentd}")
-    public ResponseEntity<?> registerForCourse(@PathVariable String courseId, @PathVariable String studentId) {
-        return courseRegistrationService.registerStudent(courseId, studentId);
-    }
-
-    @DeleteMapping("/{courseId}/cancel/{studentId}")
-    public ResponseEntity<String> cancelCourseRegistration(@PathVariable String courseId, @PathVariable String studentId) {
-        courseRegistrationService.cancelRegistration(courseId, studentId);
+    @DeleteMapping("/{courseId}/cancel/{userId}")
+    public ResponseEntity<String> cancelCourseRegistration(@PathVariable long courseId, @PathVariable long userId) {
+        courseRegistrationService.cancelRegistration(courseId, userId);
         return ResponseEntity.ok("Course registration canceled successfully");
     }
 
-    @GetMapping("/enrolled/{studentId}")
-    public ResponseEntity<List<CourseResponse>> getEnrolledCourses(@PathVariable String studentId) {
-        return ResponseEntity.ok(courseRegistrationService.getEnrolledCourses(studentId));
+    @GetMapping("/enrolled/{userId}")
+    public ResponseEntity<List<CourseResponse>> getEnrolledCourses(@PathVariable long userId) {
+        return ResponseEntity.ok(courseRegistrationService.getEnrolledCourses(userId));
     }
 
     @GetMapping("/{id}/schedule/pdf")
-    public ResponseEntity<byte[]> getCourseSchedulePdf(@PathVariable int id) {
+    public ResponseEntity<byte[]> getCourseSchedulePdf(@PathVariable long id) {
 
         byte[] pdfContent = courseService.generateCourseSchedulePdf(id);
 

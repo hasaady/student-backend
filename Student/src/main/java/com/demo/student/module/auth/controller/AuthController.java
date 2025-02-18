@@ -12,13 +12,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/public/auth")
 @Tag(name = "User Auth")
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
     private final UserService userService;
-//    private final RefreshTokenService refreshTokenService;
 
     @PostMapping("/register")
     public RegisterResponse register(@RequestBody RegisterRequest request) {

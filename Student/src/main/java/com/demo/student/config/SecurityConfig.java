@@ -1,7 +1,7 @@
 package com.demo.student.config;
 
 import com.demo.student.filter.JwtAuthenticationFilter;
-import com.demo.student.module.auth.util.jwt.JwtUtil;
+import com.demo.student.module.auth.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
     @Bean
@@ -43,14 +43,16 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable())
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
+
+        http.csrf(csrf -> csrf.disable())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 ).authorizeHttpRequests(auth -> auth
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/public/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())

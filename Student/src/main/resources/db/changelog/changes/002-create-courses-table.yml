@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001
+      author: developer
+      changes:
+        - createTable:
+            tableName: courses
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: duration
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: schedule_time
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: instructor
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: available_seats
+                  type: INT
+                  defaultValue: 0
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 002
+      author: developer
+      changes:
+        - createIndex:
+            indexName: idxCoursesName
+            tableName: courses
+            columns:
+              - column:
+                  name: name
+        - createIndex:
+            indexName: idxCoursesInstructor
+            tableName: courses
+            columns:
+              - column:
+                  name: instructor
+        - createIndex:
+            indexName: idxCoursesScheduleTime
+            tableName: courses
+            columns:
+              - column:
+                  name: schedule_time

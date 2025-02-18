@@ -37,31 +37,30 @@ public class UserService {
         user.setCountryName(country.getName().getCommon());
         user.setCapital(capital);
         user.setRegion(country.getRegion());
-        userRepository.save(user);
+
+        try {
+            userRepository.save(user);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
 
         return user;
     }
 
-    public ProfileResponse getUserProfile(String username) {
-        Optional<User> userOpt = userRepository.findByUsername(username);
+    public ProfileResponse getUserProfile(long userId) {
+        Optional<User> userOpt = userRepository.findById(userId);
 
         if (userOpt.isEmpty()) {
             throw new RuntimeException("User not found");
         }
 
         User user = userOpt.get();
-        String countryCode = user.getCountryCode();
-        String countryApiUrl = "https://restcountries.com/v3.1/alpha/" + countryCode;
 
-        JsonNode countryResponse = restTemplate.getForObject(countryApiUrl, JsonNode.class);
-
-        String countryName = countryResponse.path(0).path("name").path("common").asText();
-
-        return new ProfileResponse(user.getFirstName(), user.getLastName(), user.getEmail(), countryName);
+        return new ProfileResponse(user.getFirstName(), user.getLastName(), user.getEmail(), user.getCountryName());
     }
 
-    public ProfileResponse updateUserProfile(String email, ProfileUpdateRequest request) {
-        Optional<User> userOpt = userRepository.findByUsername(email);
+    public ProfileResponse updateUserProfile(long userId, ProfileUpdateRequest request) {
+        Optional<User> userOpt = userRepository.findById(userId);
 
         if (userOpt.isEmpty()) {
             throw new RuntimeException("User not found");
@@ -71,16 +70,17 @@ public class UserService {
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
 
-        String countryApiUrl = "https://restcountries.com/v3.1/alpha/" + request.getCountryCode();
-        JsonNode countryResponse = restTemplate.getForObject(countryApiUrl, JsonNode.class);
-
-        if (countryResponse.isEmpty()) {
-            throw new RuntimeException("Invalid country code");
+        if (!request.getCountryCode().isEmpty() || !request.getCountryCode().equals(user.getCountryCode())) {
+            var country = countryService.getCountryByCode(request.getCountryCode());
+            String capital = country.getCapital() != null && !country.getCapital().isEmpty() ? country.getCapital().get(0) : "N/A";
+            user.setCountryCode(request.getCountryCode());
+            user.setCountryName(country.getName().getCommon());
+            user.setCapital(capital);
+            user.setRegion(country.getRegion());
         }
 
-        user.setCountryCode(request.getCountryCode());
         userRepository.save(user);
 
-        return getUserProfile(email);
+        return getUserProfile(userId);
     }
 }

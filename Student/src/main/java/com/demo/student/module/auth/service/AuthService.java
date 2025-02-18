@@ -1,6 +1,5 @@
 package com.demo.student.module.auth.service;
 
-import com.demo.student.module.auth.util.jwt.JwtUtil;
 import com.demo.student.module.user.repository.UserRepository;
 import com.demo.student.module.user.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -13,24 +12,24 @@ import java.util.Optional;
 public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtService;
 
     public String authenticateUser(String username, String password) {
         Optional<User> userOpt = userRepository.findByUsername(username);
 
         if (userOpt.isPresent() && passwordEncoder.matches(password, userOpt.get().getPassword())) {
-            return jwtUtil.generateToken(username);
+            return jwtService.generateToken(username);
         } else {
             throw new RuntimeException("Invalid Credentials");
         }
     }
 
     public String generateRefreshToken(String username) {
-        return jwtUtil.generateToken(username);
+        return jwtService.generateToken(username);
     }
 
     public String refreshAccessToken(String refreshToken) {
-        String username = jwtUtil.extractUsername(refreshToken);
-        return jwtUtil.generateToken(username);
+        String username = jwtService.extractUsername(refreshToken);
+        return jwtService.generateToken(username);
     }
 }

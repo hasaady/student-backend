@@ -21,7 +21,7 @@ public class CourseRegistrationService {
         this.courseRegistrationRepository = courseRegistrationRepository;
     }
 
-    public ResponseEntity<?> registerStudent(String courseId, String studentId) {
+    public ResponseEntity<?> registerUserForCourse(long courseId, long userId) {
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new CourseNotFoundException("Course is not available"));
 
@@ -29,7 +29,7 @@ public class CourseRegistrationService {
             return ResponseEntity.badRequest().body("Course is full, no available seats.");
         }
 
-        CourseRegistration registration = new CourseRegistration(courseId, studentId);
+        CourseRegistration registration = new CourseRegistration(courseId, userId);
         courseRegistrationRepository.save(registration);
 
         course.setAvailableSeats(course.getAvailableSeats() - 1);
@@ -38,14 +38,14 @@ public class CourseRegistrationService {
         return ResponseEntity.ok("Registration successful. Remaining seats: " + course.getAvailableSeats());
     }
 
-    public void cancelRegistration(String courseId, String studentId) {
-        courseRegistrationRepository.deleteByCourseIdAndStudentId(courseId, studentId);
+    public void cancelRegistration(long courseId, long userId) {
+        courseRegistrationRepository.deleteByCourseIdAndUserId(courseId, userId);
     }
 
-    public List<CourseResponse> getEnrolledCourses(String studentId) {
+    public List<CourseResponse> getEnrolledCourses(long userId) {
 
         return courseRegistrationRepository
-                .findByStudentId(studentId)
+                .findByUserId(userId)
                 .stream()
                 .map(reg -> courseRepository.findById(reg.getCourseId()).map(CourseResponse::fromEntity).orElse(null))
                 .filter(course -> course != null)

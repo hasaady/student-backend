@@ -9,7 +9,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CourseResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private int id;
+    private long id;
     private String name;
 
     public static CourseResponse fromEntity(Course course) {

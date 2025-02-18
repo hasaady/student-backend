@@ -1,0 +1,125 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006
+      author: developer
+      changes:
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Java Programming" }
+              - column: { name: description, value: "Comprehensive Java course covering core concepts." }
+              - column: { name: duration, value: 10 }
+              - column: { name: schedule_time, value: "Monday & Wednesday 10:00 AM - 12:00 PM" }
+              - column: { name: instructor, value: "Dr. John Smith" }
+              - column: { name: available_seats, value: 30 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Spring Boot Development" }
+              - column: { name: description, value: "Advanced Spring Boot course covering REST APIs and security." }
+              - column: { name: duration, value: 12 }
+              - column: { name: schedule_time, value: "Tuesday & Thursday 2:00 PM - 4:00 PM" }
+              - column: { name: instructor, value: "Prof. Jane Doe" }
+              - column: { name: available_seats, value: 25 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Database Design & Optimization" }
+              - column: { name: description, value: "Learn PostgreSQL, indexing, and query optimization techniques." }
+              - column: { name: duration, value: 8 }
+              - column: { name: schedule_time, value: "Friday 3:00 PM - 6:00 PM" }
+              - column: { name: instructor, value: "Dr. Emily Carter" }
+              - column: { name: available_seats, value: 20 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Python for Data Science" }
+              - column: { name: description, value: "Hands-on course covering Pandas, NumPy, and machine learning basics." }
+              - column: { name: duration, value: 10 }
+              - column: { name: schedule_time, value: "Wednesday 1:00 PM - 3:00 PM" }
+              - column: { name: instructor, value: "Dr. Alice Brown" }
+              - column: { name: available_seats, value: 30 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Microservices Architecture" }
+              - column: { name: description, value: "Understand microservices design, API gateways, and service communication." }
+              - column: { name: duration, value: 14 }
+              - column: { name: schedule_time, value: "Monday 4:00 PM - 6:00 PM" }
+              - column: { name: instructor, value: "Dr. Robert King" }
+              - column: { name: available_seats, value: 25 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Cloud Computing with AWS" }
+              - column: { name: description, value: "Learn EC2, S3, Lambda, and deploying applications on AWS." }
+              - column: { name: duration, value: 10 }
+              - column: { name: schedule_time, value: "Thursday 5:00 PM - 7:00 PM" }
+              - column: { name: instructor, value: "Dr. Sarah Miller" }
+              - column: { name: available_seats, value: 20 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Full-Stack Web Development" }
+              - column: { name: description, value: "Covers front-end and back-end development with React and Node.js." }
+              - column: { name: duration, value: 16 }
+              - column: { name: schedule_time, value: "Tuesday 10:00 AM - 12:00 PM" }
+              - column: { name: instructor, value: "Dr. William Johnson" }
+              - column: { name: available_seats, value: 25 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Artificial Intelligence & Machine Learning" }
+              - column: { name: description, value: "Dive deep into neural networks, deep learning, and AI applications." }
+              - column: { name: duration, value: 12 }
+              - column: { name: schedule_time, value: "Friday 6:00 PM - 8:00 PM" }
+              - column: { name: instructor, value: "Dr. Michael Lee" }
+              - column: { name: available_seats, value: 30 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Cybersecurity Fundamentals" }
+              - column: { name: description, value: "Learn ethical hacking, network security, and threat detection." }
+              - column: { name: duration, value: 10 }
+              - column: { name: schedule_time, value: "Sunday 2:00 PM - 4:00 PM" }
+              - column: { name: instructor, value: "Dr. Olivia White" }
+              - column: { name: available_seats, value: 20 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "DevOps & CI/CD Pipelines" }
+              - column: { name: description, value: "Hands-on course covering Docker, Kubernetes, and Jenkins pipelines." }
+              - column: { name: duration, value: 8 }
+              - column: { name: schedule_time, value: "Saturday 10:00 AM - 12:00 PM" }
+              - column: { name: instructor, value: "Dr. Ethan Martinez" }
+              - column: { name: available_seats, value: 30 }
+
+        - insert:
+            tableName: courses
+            columns:
+              - column: { name: id, valueComputed: nextval('courses_id_seq') }
+              - column: { name: name, value: "Blockchain & Cryptocurrency" }
+              - column: { name: description, value: "Learn blockchain fundamentals, smart contracts, and DeFi." }
+              - column: { name: duration, value: 10 }
+              - column: { name: schedule_time, value: "Thursday 3:00 PM - 5:00 PM" }
+              - column: { name: instructor, value: "Dr. Sophia Anderson" }
+              - column: { name: available_seats, value: 25 }

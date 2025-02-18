@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, String> {
     List<Course> findByAvailableSeatsGreaterThan(int seats);
-    Optional<Course> findById(int id);
+    Optional<Course> findById(long id);
 }

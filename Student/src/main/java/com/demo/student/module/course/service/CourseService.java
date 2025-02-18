@@ -34,19 +34,7 @@ public class CourseService {
                 .orElseThrow(() -> new CourseNotFoundException("Course not found"));
     }
 
-    public CourseDetailsResponse addCourse(CreateCourseRequest request) {
-        Course course = new Course();
-        course.setName(request.getName());
-        course.setDescription(request.getDescription());
-        course.setDuration(request.getDuration());
-        course.setInstructor(request.getInstructor());
-        course.setAvailableSeats(request.getAvailableSeats());
-
-        Course savedCourse = courseRepository.save(course);
-        return CourseDetailsResponse.fromEntity(savedCourse);
-    }
-
-    public byte[] generateCourseSchedulePdf(int id) {
+    public byte[] generateCourseSchedulePdf(long id) {
 
         Optional<Course> courseOptional = courseRepository.findById(id);
 

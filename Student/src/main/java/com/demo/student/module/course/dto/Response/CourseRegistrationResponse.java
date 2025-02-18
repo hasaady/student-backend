@@ -9,11 +9,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CourseRegistrationResponse {
-    private int id;
-    private String courseId;
-    private String studentId;
+    private long id;
+    private long courseId;
+    private long userId;
 
     public static CourseRegistrationResponse fromEntity(CourseRegistration registration) {
-        return new CourseRegistrationResponse(registration.getId(), registration.getCourseId(), registration.getStudentId());
+        return new CourseRegistrationResponse(
+                registration.getId(),
+                registration.getCourseId(),
+                registration.getUserId()
+        );
     }
 }
