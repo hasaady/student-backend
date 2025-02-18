@@ -8,6 +8,7 @@ import com.demo.student.module.course.exception.CourseNotFoundException;
 import com.demo.student.module.course.dto.Response.CourseResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class CourseRegistrationService {
         return ResponseEntity.ok("Registration successful. Remaining seats: " + course.getAvailableSeats());
     }
 
+    @Transactional
     public void cancelRegistration(long courseId, long userId) {
         courseRegistrationRepository.deleteByCourseIdAndUserId(courseId, userId);
     }
